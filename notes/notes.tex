@@ -113,6 +113,9 @@
 \def\bbZ{{\mathbb Z}}
 \def\bbN{{\mathbb N}}
 \def\bbF{{\mathbb F}}
+\def\bbR{{\mathbb R}}
+\def\bbT{{\mathbb T}}
+\def\bbC{{\mathbb C}}
 \def\emdash{\hbox{---}}
 \def\endash{\hbox{--}}
 \def\nsubset{\not\subset}
@@ -120,9 +123,25 @@
 \def\x{{\vc x}}
 \def\a{{\vc a}}
 \def\b{{\vc b}}
+\def\q{{\vc q}}
+\def\c{{\vc c}}
 \def\e{{\vc e}}
 \def\f{{\vc f}}
 \def\u{{\vc u}}
+\def\w{{\vc w}}
+\def\v{{\vc v}}
+\def\y{{\vc y}}
+\def\z{{\vc z}}
+\def\k{{\vc k}}
+\def\vchatf{{\vc {\hat f}}}
+\def\zero{{\vc 0}}
+\def\Lt{{\tilde L}}
+\def\Pt{{\tilde P}}
+\def\pt{{\tilde p}}
+\def\Ut{{\tilde U}}
+\def\baralpha{\bar\alpha}
+\def\At{\tilde A}
+\def\Rt{\tilde R}
 \def\red#1{{\color{red} #1}}
 \def\blue#1{{\color{blue} #1}}
 \def\green#1{{\color{ForestGreen} #1}}
@@ -242,7 +261,7 @@ In particular we discuss:
     \item III.1 Structured Matrices: we discuss special structured matrices such as triangular and tridiagonal.
     \item III.2 Differential Equations: using divided differences we can reduce differential equations
     to linear systems. This motivates the investigation of numerical algorithms for solving linear systems.
-    \item III.3 Cholesky Factorisation: we look at computing a factorisation of a square matrix as a product of a lower and upper triangular matrix in the special case where the matrix is symmetric positive
+    \item III.3 LU and Cholesky Factorisations: we look at computing a factorisation of a square matrix as a product of a lower and upper triangular matrix, including the special case where the matrix is symmetric positive
     definite. Hidden in this is an algorithm to prove positive definiteness.
 \item III.4 Polynomial Regression: often in data science one needs to approximate data by a polynomial.
 We discuss how to reduce this problem to solving a rectangular least squares problem.
@@ -252,11 +271,44 @@ We discuss how to reduce this problem to solving a rectangular least squares pro
 
 \input{III.1.StructuredMatrices}
 \input{III.2.DifferentialEquations}
+\input{III.3.Cholesky}
+\input{III.4.Regression}
+\input{III.5.OrthogonalMatrices}
+\input{III.6.QR}
+
+
+\chapter{Approximation Theory}
+
+So far, we have seen intuitive numerical methods for computing derivatives, integrals, and solving
+differential equations, primarily based on representing functions by their values at a grid of points.
+But by using more sophisticated mathematical tools, we can achieve much more accurate and reliable
+numerical methods. In particular, we can effectively use Fourier series for computing very accurately with periodic functions,
+and orthogonal polynomials for non-periodic functions that are smooth within an interval.
+Here we introduce these fundamental tools and explore applications to quadrature (computing integrals) where they
+produce incredibly accurate approximations, ones that converge exponentially (or faster) for analytic functions.
+
+\begin{enumerate}
+    \item IV.1 Fourier Expansions: we discuss Fourier series and their usage in approximating periodic functions, using the Trapezium rule to compute the Fourier coefficients.
+    \item IV.2 Discrete Fourier Transform: The Trapezium rule approximation can be recast as a unitary matrix, known as the Discrete Fourier Transform (DFT). This is used to prove interpolation properties.
+    \item IV.3 Orthogonal Polynomials: For non-periodic functions we consider orthogonal polynomials, and discuss their basic properties.
+    \item IV.4 Classical Orthogonal Polynomials: For certain weights, orthogonal polynomials are classical and have addition structure that are useful for computations.
+    \item IV.5 Gaussian Quadrature: Finally, we revisit the  problem of computing integrals, and see that using orthogonal polynomials we can derive much more accurate methods.
+    \end{enumerate}
+
+We stop at integration, but Fourier and orthogonal polynomial expansions also lead to very effective scheme for solving differential equations
+and many other applications.
+
+\input{IV.1.Fourier}
+\input{IV.2.DFT}
+
 
 \appendix
 
 \chapter{Asymptotics and Computational Cost}
 \input{A.Asymptotics}
+
+\chapter{Permutation Matrices}
+\input{A.Permutations}
 
 
 
